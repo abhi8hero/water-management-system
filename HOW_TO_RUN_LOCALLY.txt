@@ -2,7 +2,7 @@
   Industrial Water Management System — Local Setup Instructions
 =====================================================================
 
-PROJECT: Smart Water Distribution Management System (AquaControl)
+PROJECT: Smart Water Distribution Management System (AVV TechSutra)
 STACK  : React 18 + TypeScript + Vite + Tailwind CSS + shadcn/ui
 MAPS   : Leaflet (OpenStreetMap — no API key needed)
 CHARTS : Recharts
@@ -237,5 +237,5 @@ QUICK START SUMMARY
 
 
 =====================================================================
-  Built with AquaControl — Smart Water Distribution System
+   Designed by Abhi The Great
 =====================================================================
