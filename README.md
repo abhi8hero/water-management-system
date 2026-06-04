@@ -1,5 +1,5 @@
 
-# Water Management System
+# Water Management System Dashboards
 
 An IoT-based smart water management system designed to monitor and control water distribution efficiently using real-time automation. **Specially build for Mobile Application**.
 
