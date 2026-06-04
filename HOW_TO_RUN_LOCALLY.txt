@@ -1,0 +1,241 @@
+=====================================================================
+  Industrial Water Management System — Local Setup Instructions
+=====================================================================
+
+PROJECT: Smart Water Distribution Management System (AquaControl)
+STACK  : React 18 + TypeScript + Vite + Tailwind CSS + shadcn/ui
+MAPS   : Leaflet (OpenStreetMap — no API key needed)
+CHARTS : Recharts
+ESP32  : Mock service included (no hardware required to run)
+
+
+---------------------------------------------------------------------
+STEP 1 — Prerequisites
+---------------------------------------------------------------------
+
+Make sure you have the following installed on your machine:
+
+  • Node.js  v18 or higher  (recommended: v20 LTS or v22)
+    Download: https://nodejs.org
+
+  • pnpm  (preferred package manager used in this project)
+    Install via npm:
+      npm install -g pnpm
+
+    Or via the official installer:
+      https://pnpm.io/installation
+
+  To verify installations, run:
+    node --version     (should print v18.x.x or higher)
+    pnpm --version     (should print 8.x.x or higher)
+
+
+---------------------------------------------------------------------
+STEP 2 — Extract the ZIP File
+---------------------------------------------------------------------
+
+  1. Unzip the downloaded file:
+       water-management-system.zip
+
+  2. You will get a folder with all project files, for example:
+       water-management-system/
+
+  3. Open your terminal (Command Prompt / PowerShell / bash / zsh)
+     and navigate into the project folder:
+
+       cd water-management-system
+
+
+---------------------------------------------------------------------
+STEP 3 — Install Dependencies
+---------------------------------------------------------------------
+
+  Run the following command inside the project folder:
+
+    pnpm install
+
+  This will download all required packages into the node_modules/
+  folder. This may take 1–3 minutes on the first run.
+
+  NOTE: If you prefer npm, you can also use:
+    npm install
+
+  NOTE: If you prefer yarn:
+    yarn install
+
+
+---------------------------------------------------------------------
+STEP 4 — Start the Development Server
+---------------------------------------------------------------------
+
+  Run:
+
+    pnpm dev
+
+  Or with npm:
+
+    npm run dev
+
+  The terminal will print something like:
+
+    VITE v6.x.x  ready in 500 ms
+
+    ➜  Local:   http://localhost:5173/
+    ➜  Network: http://192.168.x.x:5173/
+
+  Open your browser and go to:
+
+    http://localhost:5173
+
+
+---------------------------------------------------------------------
+STEP 5 — Using the Application
+---------------------------------------------------------------------
+
+  Once the browser is open you will see the Dashboard. Navigate using
+  the left sidebar to explore all 9 pages:
+
+  • Dashboard   — KPI cards, animated reservoir tanks, 24h charts
+  • Reservoirs  — Detailed water level monitoring for 4 reservoirs
+  • Valves      — Toggle Valve A/B/C/D via ON/OFF switch
+  • Pumps       — Start/Stop Pump 1/2/3 with power consumption data
+  • Sensors     — Real-time sensor data table (level, flow, pressure)
+  • Map View    — Leaflet/OpenStreetMap with node & reservoir markers
+  • Logs        — Searchable event log with type filtering
+  • Alerts      — Active alarms with acknowledge functionality
+  • Settings    — Dark/Light mode toggle + ESP32 node status
+
+  The top-right button in the header allows toggling Dark / Light mode.
+
+  The "E-Stop" (Emergency Stop) button in the top bar shuts down all
+  valves and pumps immediately. Click it twice to confirm, then use
+  "Reset E-Stop" to restore manual control.
+
+  All sensor data updates automatically every 3 seconds (simulated).
+
+
+---------------------------------------------------------------------
+STEP 6 — Connecting Real ESP32 Hardware (Optional)
+---------------------------------------------------------------------
+
+  By default, the app runs with mock/simulated data.
+  To connect actual ESP32 devices:
+
+  1. Open the file:
+       src/services/esp32Service.ts
+
+  2. Change the BASE_URL at the top of the file from:
+       const BASE_URL = '/api';
+
+     To your ESP32's IP address, for example:
+       const BASE_URL = 'http://192.168.1.100';
+
+  3. Make sure your ESP32 firmware exposes these endpoints:
+
+       GET  /api/status
+       Response: { "waterLevel": 75, "valveA": true, "pump1": false }
+
+       POST /api/valveA    Body: { "state": true }
+       POST /api/valveB    Body: { "state": false }
+       POST /api/valveC    Body: { "state": true }
+       POST /api/valveD    Body: { "state": false }
+       POST /api/pump1     Body: { "action": "start" }
+       POST /api/pump2     Body: { "action": "stop" }
+       POST /api/pump3     Body: { "action": "start" }
+       POST /api/emergency Body: { "action": "stop_all" }
+
+  4. If your ESP32 is on a different network, make sure CORS headers
+     are enabled on the ESP32 firmware:
+       Access-Control-Allow-Origin: *
+
+
+---------------------------------------------------------------------
+STEP 7 — Build for Production (Optional)
+---------------------------------------------------------------------
+
+  To create an optimized production build:
+
+    pnpm build
+
+  The output will be in the  dist/  folder.
+
+  To preview the production build locally:
+
+    pnpm preview
+
+  Then open:  http://localhost:4173
+
+
+---------------------------------------------------------------------
+TROUBLESHOOTING
+---------------------------------------------------------------------
+
+  Problem : "pnpm: command not found"
+  Fix     : Run  npm install -g pnpm  then try again.
+
+  Problem : Port 5173 already in use
+  Fix     : Run  pnpm dev --port 3000  to use a different port.
+
+  Problem : Map not loading / blank map area
+  Fix     : Check your internet connection. The map tiles are loaded
+            from openstreetmap.org and require internet access.
+
+  Problem : "Cannot find module ..." error after install
+  Fix     : Delete node_modules and reinstall:
+              rm -rf node_modules
+              pnpm install
+
+  Problem : White screen / React error on startup
+  Fix     : Check the browser console (F12) for error messages.
+            Make sure Node.js version is 18 or higher.
+
+  Problem : Valve/Pump controls show "Emergency stop active"
+  Fix     : Click "Reset E-Stop" in the top bar header to re-enable
+            manual control.
+
+
+---------------------------------------------------------------------
+PROJECT FILE STRUCTURE
+---------------------------------------------------------------------
+
+  src/
+  ├── App.tsx                        — Root app with routing
+  ├── routes.tsx                     — Route definitions
+  ├── index.css                      — Global styles & design tokens
+  ├── contexts/
+  │   └── AppContext.tsx             — Global state (data, actions)
+  ├── services/
+  │   └── esp32Service.ts           — ESP32 API layer (mock + real)
+  ├── types/
+  │   └── types.ts                  — TypeScript interfaces
+  ├── components/
+  │   ├── layouts/
+  │   │   ├── MainLayout.tsx        — Sidebar + TopBar wrapper
+  │   │   ├── Sidebar.tsx           — Left navigation sidebar
+  │   │   └── TopBar.tsx            — Header bar with controls
+  │   └── TankVisualization.tsx     — Animated water tank component
+  └── pages/
+      ├── DashboardPage.tsx         — Main dashboard
+      ├── ReservoirsPage.tsx        — Reservoir monitoring
+      ├── ValvesPage.tsx            — Valve control panel
+      ├── PumpsPage.tsx             — Pump control panel
+      ├── SensorsPage.tsx           — Sensor data table
+      ├── MapViewPage.tsx           — Leaflet interactive map
+      ├── LogsPage.tsx              — Event log viewer
+      ├── AlertsPage.tsx            — Alarm management
+      └── SettingsPage.tsx          — App settings
+
+
+---------------------------------------------------------------------
+QUICK START SUMMARY
+---------------------------------------------------------------------
+
+  1.  cd water-management-system
+  2.  pnpm install
+  3.  pnpm dev (if fails use pnpm vite)
+  4.  Open http://localhost:5173 in your browser
+
+
+=====================================================================
+  Built with AquaControl — Smart Water Distribution System
+=====================================================================
