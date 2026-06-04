@@ -69,6 +69,7 @@ This project was built to strengthen understanding of:
 - **React** – Frontend structure  
 - **TailwindCSS** – Styling & layout  
 - **TypeScript** – Dashboard logic  
+- **Arduino IDE** – ESP32 programming
 
 ---
 
