@@ -102,15 +102,22 @@ Make sure you have the following installed on your machine:
     Download: https://nodejs.org
 
   • pnpm  (preferred package manager used in this project)
-    Install via npm:
-      npm install -g pnpm
-
-    Or via the official installer:
+    Install via the official installer:
       https://pnpm.io/installation
+      Or
+
+    npm install -g pnpm
 
   To verify installations, run:
-    node --version     (should print v18.x.x or higher)
-    pnpm --version     (should print 8.x.x or higher)
+  
+    node --version     
+    
+  (should print v18.x.x or higher)
+
+    
+    pnpm --version     
+    
+  (should print 8.x.x or higher)
 
 
 STEP 2 — Install Dependencies
@@ -123,9 +130,11 @@ STEP 2 — Install Dependencies
   folder. This may take 1–3 minutes on the first run.
 
   NOTE: If you prefer npm, you can also use:
+  
     npm install
 
   NOTE: If you prefer yarn:
+  
     yarn install
 
 
