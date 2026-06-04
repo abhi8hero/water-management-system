@@ -3,7 +3,6 @@
 
 An IoT-based smart water management system designed to monitor and control water distribution efficiently using real-time automation. **Specially build for Mobile Application**.
 
----
 
 ## 📖 About the Project
 
@@ -17,13 +16,11 @@ This project was built to strengthen understanding of:
 - Real-time monitoring dashboards
 - Automation and control systems
 
----
 
 ## 🚀 Live Demo
 🔗 Live Demo: *http://localhost:5173/*  
 🚧 Currently running locally
 
----
 
 ## 📸 Screenshots
 **Dashboard Overview:**  
@@ -53,25 +50,23 @@ This project was built to strengthen understanding of:
 **Settings Panel:** 
 ![alt text](image-8.png)
 
----
 
 ## ✨ Features
-- Real-time valve monitoring
+- Real-time monitoring
 - ESP32-based automation
 - Relay-controlled water valves
 - Interactive dashboard UI
 - Live system status updates
 - Scalable architecture for multiple valves
 
----
 
 ## 🛠️ Tech Stack
 - **React** – Frontend structure  
 - **TailwindCSS** – Styling & layout  
 - **TypeScript** – Dashboard logic  
 - **Arduino IDE** – ESP32 programming
+- **All other required hardwares**  - sensors, pumps, Microcontrolers, water storages, etc.
 
----
 
 ## 🧩 Using the Application
 
@@ -96,7 +91,6 @@ This project was built to strengthen understanding of:
 
   All sensor data updates automatically every 3 seconds (simulated).
 
-  ---
 
 ## 🚀 How to Run Locally
 
@@ -140,7 +134,8 @@ STEP 4 — Start the Development Server
   Run:
 
     pnpm dev 
-    or
+  or
+  
     pnpm vite
 
   Or with npm:
@@ -159,7 +154,6 @@ STEP 4 — Start the Development Server
     http://localhost:5173
 
 
-
 ---------------------------------------------------------------------
 ## QUICK START SUMMARY
 ---------------------------------------------------------------------
@@ -169,9 +163,8 @@ STEP 4 — Start the Development Server
   3.  pnpm dev (if fails use pnpm vite)
   4.  Open http://localhost:5173 in your browser
 
-For detailed information view HOW_TO_RUN_LOCALLY.txt[HOW_TO_RUN_LOCALLY.txt]
+For detailed information view [HOW_TO_RUN_LOCALLY.txt](HOW_TO_RUN_LOCALLY.txt)
 
----
 
 ## 👨‍💻 Developed By                                                                                        
 Abhishek Ugare                                               
