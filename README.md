@@ -17,7 +17,7 @@ This project was built to strengthen understanding of:
 
 
 ## 🚀 Live Demo
-🔗 Live Demo: *http://localhost:5173/*  
+🔗 Live Demo (Mock Data): https://water-management-system-puce.vercel.app/
 🚧 Currently running locally
 
 
