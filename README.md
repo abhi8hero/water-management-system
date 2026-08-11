@@ -17,7 +17,7 @@ This project was built to strengthen understanding of:
 
 
 ## 🚀 Live Demo
-🔗 Live Demo (Mock Data): https://water-management-system-puce.vercel.app/
+🔗 Live Demo (Mock Data): https://water-management-system-puce.vercel.app/                                                                          
 🚧 Currently running locally
 
 
